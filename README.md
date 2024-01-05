@@ -15,8 +15,9 @@ Deployed Site: https://treylathe.github.io/mod-5-challenge/
 
 SCREENSHOTS:
 
-Screencast of application and functions (hour blocks color coded, text input and persists, ect)
-![screencast](Assets/mod6screenrecord.png)
+screenshots of application and functions (hour blocks color coded, text input and persists, ect)
+![top of application](Assets/schedulerTop.png)
+![saved events](Assets/mod6screenrecord.png)
 
 COMMENTS:
 
