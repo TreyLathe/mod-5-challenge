@@ -16,24 +16,15 @@ setInterval(dateTimeUpdate, 1000) ;
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
-  
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-
   //for each hour, if hour is past, use past style, if hour is present, use present style, etc. 
   $(function () {
     // Get the current hour using day.js
-    var currentHour = dayjs().hour();
-    console.log(currentHour);
+    let currentHour = dayjs().hour();
   
     // Loop through each time block
     $(".time-block").each(function () {
       // Extract the hour from the id attribute
-      var blockHour = parseInt($(this).attr("id").split("-")[1]);
+      let blockHour = parseInt($(this).attr("id").split("-")[1]);
   
       // Compare the block hour with the current hour
       if (blockHour < currentHour) {
@@ -48,7 +39,39 @@ setInterval(dateTimeUpdate, 1000) ;
       }
     });
 
+    $(document).ready(function () {
+      // Event listener for saveBtn click
+      $('.saveBtn').on('click', function () {
+        // Get the description text
+        let descriptionText = $(this).siblings('.description').val();
 
+        // Get the unique ID of the parent time block
+        let timeBlockID = $(this).parent().attr('id');
+
+        // Save the text to local storage using the time block ID as a key
+        localStorage.setItem(timeBlockID, descriptionText);
+      });
+
+      // Load saved events on page load
+      function loadSavedEvents() {
+        // Loop through each time block
+        $('.time-block').each(function () {
+          // Get the time block ID
+          let timeBlockID = $(this).attr('id');
+
+          // Retrieve the saved text from local storage using the time block ID
+          let savedText = localStorage.getItem(timeBlockID);
+
+          // If there's saved text, set it in the description textarea
+          if (savedText !== null) {
+            $(this).find('.description').val(savedText);
+          }
+        });
+      }
+
+      // Call the function to load saved events on page load
+      loadSavedEvents();
+    });
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?

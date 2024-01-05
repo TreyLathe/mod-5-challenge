@@ -34,9 +34,15 @@ Expanded standard business hours from 8am to 7pm since those are my current work
 
 Used provided code to expand the hours, changed colors, added javascript and day.js functions with css to change color depending on if the hour is past/present or future
 
-WHEN I click into a time block
-THEN I can enter an event
-WHEN I click the save button for that time block
-THEN the text for that event is saved in local storage
-WHEN I refresh the page
-THEN the saved events persist
+    WHEN I click into a time block
+    THEN I can enter an event
+
+Event can be entered.
+
+    WHEN I click the save button for that time block
+    THEN the text for that event is saved in local storage
+    WHEN I refresh the page
+    THEN the saved events persist
+
+The preceding is functional, can save event and it persists.
+
