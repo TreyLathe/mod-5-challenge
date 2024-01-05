@@ -1,7 +1,14 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+let dateTime = document.getElementById("dateTime");
 
+function dateTimeUpdate() {
+  let rightNow = dayjs().format("dddd, MMMM DD YYYY");
+  dateTime.textContent = rightNow;
+}
+
+setInterval(dateTimeUpdate, 1000) ;
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -21,6 +28,7 @@
   $(function () {
     // Get the current hour using day.js
     var currentHour = dayjs().hour();
+    console.log(currentHour);
   
     // Loop through each time block
     $(".time-block").each(function () {
